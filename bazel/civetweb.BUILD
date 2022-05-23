@@ -24,12 +24,13 @@ cc_library(
         "include/civetweb.h",
     ],
     copts = [
+        "-DOPENSSL_API_1_1",
         "-DUSE_IPV6",
         "-DNDEBUG",
         "-DNO_CGI",
         "-DNO_CACHING",
-        "-DNO_SSL",
         "-DNO_FILES",
+        "-DNO_SSL_DL",
         "-UDEBUG",
     ],
     includes = [
@@ -43,6 +44,10 @@ cc_library(
         ":windows": [],
         "//conditions:default": ["-lrt"],
     }),
+    deps = [
+        "@boringssl//:crypto",
+        "@boringssl//:ssl",
+    ],
     textual_hdrs = [
         "src/md5.inl",
         "src/handle_form.inl",
@@ -59,11 +64,12 @@ cc_library(
         "include/CivetServer.h",
     ],
     copts = [
+        "-DOPENSSL_API_1_1",
         "-DUSE_IPV6",
         "-DNDEBUG",
         "-DNO_CGI",
         "-DNO_CACHING",
-        "-DNO_SSL",
+        "-DNO_SSL_DL",
         "-DNO_FILES",
     ],
     includes = [
