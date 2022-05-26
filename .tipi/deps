@@ -1,0 +1,11 @@
+{
+  "google/benchmark":  { "@" : "v1.6.1",
+      "u": true, 
+      "packages": ["benchmark"], 
+      "targets": ["benchmark::benchmark", "benchmark::benchmark_main"],
+      "requires": {
+          "google/googletest": { "u": true, "packages": ["GTest"], "targets": ["GTest::gtest", "GTest::gmock"] }
+      }
+  },
+  "platform" : ["civetweb::+civetweb-c-library", "civetweb::+civetweb-cpp", "ZLIB::+zlib", "CURL::+libcurl"]
+}
